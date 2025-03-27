@@ -25,6 +25,7 @@ A powerful NodeJS SDK for interacting with the [Mekari Qontak API](https://docs.
 - [Contributing](#contributing)
 - [Support](#support)
 - [Testing](#testing)
+- [Releasing to NPM](#releasing-to-npm)
 
 ## Installation
 
@@ -238,74 +239,131 @@ npm run test:coverage
 
 This will generate a coverage report in the `coverage` directory.
 
-## Development
+## Releasing to NPM
 
 ### Prerequisites
-
-- Node.js 18.x or later
-- npm 9.x or later
+- NPM account with access to the package
+- NPM access token with publish permissions
+- GitHub account with repository access
+- GitHub personal access token with repo permissions
 
 ### Setup
+1. Add your NPM token to GitHub repository secrets:
+   - Go to your repository settings
+   - Navigate to Secrets and Variables > Actions
+   - Add a new secret named `NPM_TOKEN` with your npm access token
 
-1. Clone the repository:
+2. Configure your NPM account:
 ```bash
-git clone https://github.com/yourusername/qontak-client.git
-cd qontak-client
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Run tests:
-```bash
-npm test
-```
-
-4. Build the project:
-```bash
-npm run build
-```
-
-### Versioning
-
-This project follows [Semantic Versioning](https://semver.org/):
-
-- **MAJOR** version (1.x.x) for incompatible API changes
-- **MINOR** version (x.1.x) for backwards-compatible functionality additions
-- **PATCH** version (x.x.1) for backwards-compatible bug fixes
-
-### Publishing to NPM
-
-1. Login to NPM:
-```bash
+# Login to NPM
 npm login
+
+# Set up your package scope (if using a scope)
+npm config set scope @your-scope
 ```
 
-2. Choose the appropriate version bump:
+### Version Management
+The project follows [Semantic Versioning](https://semver.org/):
+- `MAJOR` version for incompatible API changes
+- `MINOR` version for backwards-compatible functionality additions
+- `PATCH` version for backwards-compatible bug fixes
+
+### Release Process
+1. Update the version:
 ```bash
 # For patch updates (bug fixes)
-npm run publish:patch
+npm version patch
 
 # For minor updates (new features)
-npm run publish:minor
+npm version minor
 
 # For major updates (breaking changes)
-npm run publish:major
+npm version major
 ```
 
-The publish scripts will:
-1. Run all tests
-2. Build the project
-3. Update the version number
-4. Create a git tag
-5. Publish to NPM
+2. Push changes and tags:
+```bash
+git push origin main --tags
+```
 
-### CI/CD
+The GitHub Actions workflow will automatically:
+- Build the project
+- Run tests
+- Create a GitHub release
+- Publish to NPM
+- Include all necessary files in the release
 
-The project uses GitHub Actions for CI/CD:
-- Tests run on every push and pull request
-- Builds run on every push to main
-- Artifacts are uploaded after successful builds
+### Release Files
+The following files are included in each release:
+- `dist/**/*` - Compiled JavaScript files
+- `package.json` - Package configuration
+- `package-lock.json` - Dependency lock file
+- `README.md` - Documentation
+- `CHANGELOG.md` - Version history
+- `LICENSE` - License file
+
+### Troubleshooting
+If the release fails:
+1. Check the GitHub Actions logs for errors
+2. Verify your NPM token has publish permissions
+3. Ensure all tests pass locally
+4. Check if the version number is already taken on NPM
+5. Verify the package name is available
+
+### Best Practices
+1. **Before Release**
+   - Update CHANGELOG.md
+   - Run tests locally
+   - Check for breaking changes
+   - Update documentation if needed
+
+2. **During Release**
+   - Use semantic versioning
+   - Tag releases with git
+   - Include all necessary files
+   - Test the published package
+
+3. **After Release**
+   - Verify the package on NPM
+   - Test installation in a new project
+   - Update documentation if needed
+   - Monitor for issues
+
+### Beta Releases
+To publish a beta version:
+```bash
+# Create a beta version
+npm version prerelease --preid=beta
+
+# Push changes and tags
+git push origin main --tags
+```
+
+The package will be published with the beta tag:
+```bash
+npm install qontak-client@beta
+```
+
+### Rollback
+If you need to rollback a release:
+1. Unpublish the version:
+```bash
+npm unpublish qontak-client@<version>
+```
+
+2. Create a new patch version:
+```bash
+npm version patch
+```
+
+3. Push the changes:
+```bash
+git push origin main --tags
+```
+
+### Support
+For release-related issues:
+1. Check the [GitHub Issues](https://github.com/your-org/qontak-client/issues)
+2. Review the [NPM documentation](https://docs.npmjs.com/)
+3. Contact the maintainers
 
