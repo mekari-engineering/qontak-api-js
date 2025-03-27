@@ -5,6 +5,13 @@
 
 A powerful NodeJS SDK for interacting with the [Mekari Qontak API](https://docs.qontak.com). This library provides a streamlined and developer-friendly way to integrate messaging capabilities into your applications.
 
+## Prerequisites
+- Node.js version 14 or higher
+- WhatsApp Business API account
+- [A Qontak account](https://qontak.com) with WhatsApp Channel enabled
+- [API credentials](https://developers.mekari.com/docs/kb/managing-applications/create-application) (Client ID and Client Secret)
+- [Approved message templates](https://chat.qontak.com/campaign/templates/whatsapp)
+  
 ## Features
 
 - 🔐 Secure authentication with HMAC
