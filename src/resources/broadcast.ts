@@ -20,7 +20,7 @@ export class BroadcastApi {
     return this.client.request("get", `/broadcasts/${broadcast_id}/whatsapp`);
   }
 
-  async createBroadcastDirect(data: string): Promise<any> {
-    return this.client.request("post", `/broadcasts/whatsapp/direct}`);
+  async createBroadcastDirect(data: {}): Promise<any> {
+    return this.client.request("post", `/broadcasts/whatsapp/direct`, data);
   }
 }

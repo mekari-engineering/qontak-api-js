@@ -1,8 +1,6 @@
-export type CursorDirection = "after" | "before"
-export type OrderBy = "created_at" | "updated_at"
-export type OrderDirection = "asc" | "desc"
+import { CursorDirection, OrderBy, OrderDirection, TargetChannel } from "./general"
+
 export type IsCounted = true | false
-export type TargetChannel = "wa" | "email" | "sms" | "wa_cloud" | "fb" | "ig"
 export type ExecuteTypes = "immediately" | "specific" | "campaign_plan"
 
 export interface GetBroadcastList {

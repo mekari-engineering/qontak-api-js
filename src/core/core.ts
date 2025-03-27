@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosError } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import { generateHmacAuth } from "../utils/hmac"; // Import the HMAC function
 import { URL } from "url"; 
 import qs from "qs"
@@ -21,7 +21,6 @@ export class ApiClient {
 
     this.client = axios.create({
       baseURL: BASE_URL,
-      headers: { "Content-Type": "application/json" },
     });
 
     this.setupInterceptors();
@@ -54,13 +53,25 @@ export class ApiClient {
     );
   }
 
-  async request<T>(method: "get" | "post" | "put" | "delete", endpoint: string, data?: object): Promise<T> {
-    const response = await this.client.request<T>({
+  async request<T>(
+    method: "get" | "post" | "put" | "delete",
+    endpoint: string,
+    data?: object | FormData,
+    extraHeaders: Record<string, string> = {}
+  ): Promise<T> {
+    const isFormData = data instanceof FormData;
+
+    const config: AxiosRequestConfig = {
       method,
       url: endpoint,
-      ...(method === "get" ? { params: data } : { data }), // Send payload in body for POST/PUT
-    });
+      headers: {
+        ...(isFormData ? {} : { "Content-Type": "application/json" }), // Let Axios set FormData headers
+        ...extraHeaders, // Allow custom headers
+      },
+      ...(method === "get" ? { params: data } : { data }),
+    };
 
+    const response = await this.client.request<T>(config);
     return response.data;
   }
 }
