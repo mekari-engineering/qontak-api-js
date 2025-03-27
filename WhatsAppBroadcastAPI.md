@@ -30,7 +30,7 @@
 
 ## Prerequisites
 - Node.js version 14 or higher
-- A Qontak account with WhatsApp Channel enabled
+- A [Qontak account](https://qontak.com) with WhatsApp Channel enabled
 - API credentials (Client ID and Client Secret)
 - WhatsApp Business API account
 - Approved message templates
