@@ -1,7 +1,7 @@
 {
   "name": "qontak-client",
   "version": "1.0.0",
-  "description": "A NodeJS SDK for interacting with the Mekari Qontak API",
+  "description": "A NodeJS SDK for interacting with the Mekari Qontak API. Visit https://qontak.com for more information.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -40,13 +40,13 @@
   "bugs": {
     "url": "https://github.com/mekari-engineering/qontak-api-js/issues"
   },
-  "homepage": "https://github.com/mekari-engineering/qontak-api-js#readme",
+  "homepage": "https://qontak.com",
   "dependencies": {
     "axios": "^1.6.7"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.11.19",
+    "@types/node": "^20.17.27",
     "jest": "^29.7.0",
     "ts-jest": "^29.1.2",
     "typescript": "^5.3.3"
