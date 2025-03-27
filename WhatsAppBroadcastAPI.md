@@ -509,8 +509,8 @@ Message Template with CTA Phone Button.
 
 ```javascript
 const withCtaURL =         {
-  "to_name": "Burhan",
-  "to_number": "628117661000",
+  "to_name": "Test User",
+  "to_number": "6281234567890",
   "message_template_id": "99aa44c1-6573-4a89-b0ca-f272b1b846b4",
   "channel_integration_id": "56b60c3c-0123-46af-958b-32f3ad12ee37",
   "language": {
