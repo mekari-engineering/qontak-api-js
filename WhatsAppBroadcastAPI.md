@@ -404,7 +404,7 @@ const response = await api.broadcast.createBroadcastDirect(withDocTemplate)
 
 Message Template with video attachment.
 
-![Document Message](docs/assets/video.png)
+![Video Message](docs/assets/video.png)
 
 ```javascript
 const withVideoTemplate =     {
@@ -456,7 +456,7 @@ const response = await api.broadcast.createBroadcastDirect(withVideoTemplate)
 
 Message Template with CTA Link URL Button.
 
-![Document Message](docs/assets/cta-url.png)
+![CTA Link Message](docs/assets/cta-url.png)
 
 ```javascript
 withCtaURL =         {
@@ -475,6 +475,27 @@ withCtaURL =         {
           "value": "fitur/personalisasi-report-sales",
         }
       ],
+      "body": []
+  }
+}
+const response = await api.broadcast.createBroadcastDirect(withCtaURL)
+```
+
+Message Template with CTA Phone Button.
+
+![CTA Phone Message](docs/assets/cta-phone.png)
+
+```javascript
+const withCtaURL =         {
+  "to_name": "Burhan",
+  "to_number": "628117661000",
+  "message_template_id": "99aa44c1-6573-4a89-b0ca-f272b1b846b4",
+  "channel_integration_id": "56b60c3c-0123-46af-958b-32f3ad12ee37",
+  "language": {
+      "code": "id"
+  },
+  "parameters": {
+      "buttons": [],
       "body": []
   }
 }
