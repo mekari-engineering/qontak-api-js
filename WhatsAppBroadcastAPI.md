@@ -6,6 +6,28 @@
 - Keep your API keys secure
 - Regularly rotate your credentials
 
+## Table of Contents
+1. [Prerequisites](#prerequisites)
+2. [Quick Start](#quick-start)
+3. [API Information](#api-information)
+4. [Flow](#flow)
+5. [Authentication](#authentication)
+6. [Get available WhatsApp channels](#get-available-whatsapp-channels)
+7. [Get available WhatsApp message template](#get-available-whatsapp-message-template)
+8. [Send Whatsapp Message Outbound Direct](#send-whatsapp-message-outbound-direct)
+9. [Security Best Practices](#security-best-practices)
+10. [Get Log WhatsApp Outbound Message Direct](#get-log-whatsapp-outbound-message-direct)
+11. [Send some of categories of WhatsApp templates](#send-some-of-categories-of-whatsapp-templates)
+    - [Send OTP](#send-otp)
+    - [Send Text with variable](#send-text-with-variable)
+    - [Send Image](#send-image)
+    - [Send Document](#send-document)
+    - [Send Video](#send-video)
+    - [Send CTA Button](#send-cta-button)
+12. [Error Handling](#error-handling)
+13. [Rate Limiting](#rate-limiting)
+14. [Best Practices](#best-practices)
+
 ## Prerequisites
 - Node.js version 14 or higher
 - A Qontak account with WhatsApp Channel enabled
